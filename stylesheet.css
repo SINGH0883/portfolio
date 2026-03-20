@@ -162,22 +162,6 @@ text-shadow:
 
 .about-text p {
     text-align: center;
-
-    
-}
-.about-text h4{
-    font-size: 29px;
-    font-weight: 600;
-    color: #fff;
-    line-height: 1.7;
-    margin: 15px 0 30px;
-}
-
-.about-text p{
-    color: aliceblue;
-    font-size: 17px;
-    line-height: 1.4;
-    margin-bottom: 5rem;
 }
 
 .services{
