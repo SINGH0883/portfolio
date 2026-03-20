@@ -680,21 +680,6 @@ margin-bottom:12px;
     margin-top: 70px;
 }
 
-.top{
-    position: fixed;
-    bottom: 2.1rem;
-    right: 2.1rem;
-}
-
-.top i{
-    color: #000;
-    background: #00f7ff;
-    font-size: 20px;
-    padding: 10px;
-    border-radius: 0.5rem;
-}
-
-
 
 @keyframes aiBackground{
 0%{background-position:0% 50%;}
