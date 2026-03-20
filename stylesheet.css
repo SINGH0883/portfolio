@@ -147,15 +147,14 @@ text-shadow:
     0 0 20px cyan, 0 0 40px cyan
 }
 
-.about{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    gap: 1.5rem;
+.about {
+    text-align: center;
+    padding: 80px 10%;
 }
 
-.about-text h2{
-    font-size: 60px;
+.about-text {
+    max-width: 800px;
+    margin: auto;
 }
 
 .about-text h2 span{
