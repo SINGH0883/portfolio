@@ -36,9 +36,15 @@ main {
 }
 
 .section {
-    padding: clamp(54px, 8vw, 92px) 0;
-    scroll-margin-top: 90px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
+
+#about {
+    scroll-margin-top: 100px;
+}
+
 
 .content-wrap,
 .home {
