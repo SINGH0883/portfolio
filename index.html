@@ -13,6 +13,7 @@
 </head>
 
 <body>
+<div id="particles-js"></div>
 <header class="header">
     <a href="#home" class="brand">Yuvraj Singh</a>
     <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
@@ -128,35 +129,57 @@
     </section>
     <section class="section" id="contact">
         <div class="content-wrap contact-layout reveal">
-            <div class="card contact-card">
-                <h2 class="section-title">Contact <span>Me</span></h2>
-                <p>
-                    If you have a project, collaboration idea, or role in AI, Data Science, or Web Development,
-                    let’s connect and build something impactful.
-                </p>
-                <ul class="contact-list">
-                    <li><img width="20" height="20" src="https://img.icons8.com/emoji/48/e-mail.png" alt="Email"> yuvraj****@zohomail.in</li>
-                    <li><img width="20" height="20" src="https://img.icons8.com/color/48/ringer-volume.png" alt="Phone"> +91 ******0321</li>
-                </ul>
-                <div class="social-links">
+            <div class="contact-left-col">
+                <div class="card contact-card">
+                    <h2 class="section-title">Contact <span>Me</span></h2>
+                    <p>
+                        If you have a project, collaboration idea, or role in AI, Data Science, or Web Development,
+                        let’s connect and build something impactful.
+                    </p>
+                    <ul class="contact-list">
+                        <li><img width="20" height="20" src="https://img.icons8.com/emoji/48/e-mail.png" alt="Email"> yuvraj****@zohomail.in</li>
+                        <li><img width="20" height="20" src="https://img.icons8.com/color/48/ringer-volume.png" alt="Phone"> +91 ******0321</li>
+                    </ul>
+
+                    
+                    <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 32px 0;">
+                    
+                    <div class="form-section">
+                    <form id="contact-form" action="https://formspree.io/f/mnjgrzey" method="POST">
+                        <input type="text" name="name" placeholder="Enter Your Name" required>
+                        <input type="email" name="email" placeholder="Enter Your Email" required>
+                        <input type="text" name="subject" placeholder="Enter Your Subject">
+                        <textarea name="message" rows="5" placeholder="Enter Your Message" required></textarea>
+                        <button type="submit" class="btn btn-primary send-btn" id="contact-button">Send Message</button>
+                        <p id="contact-status"></p>
+                    </form>
+                </div>
+                
+                <div class="social-links" style="margin-top: 32px;">
                     <a href="https://www.facebook.com/profile.php?id=100090629662085" target="_blank" rel="noopener noreferrer"><img width="30" height="30" src="https://img.icons8.com/liquid-glass/48/facebook-new.png" alt="facebook-new"/></a>
                     <a href="https://x.com/mr_yuvraj_85" target="_blank" rel="noopener noreferrer"><img width="30" height="30" src="https://img.icons8.com/liquid-glass/48/delete-sign.png" alt="delete-sign"/></a>
                     <a href="https://instagram.com/mr_yuvraj_85" target="_blank" rel="noopener noreferrer"><img width="30" height="30" src="https://img.icons8.com/liquid-glass/48/instagram-new.png" alt="instagram-new"/></a>
                     <a href="https://www.linkedin.com/in/yuvraj-singh-85abc/" target="_blank" rel="noopener noreferrer"><img width="30" height="30" src="https://img.icons8.com/liquid-glass/48/linkedin.png" alt="linkedin"/></a>
                     <a href="https://github.com/SINGH0883" target="_blank" rel="noopener noreferrer"><img width="32" height="32" src="https://img.icons8.com/liquid-glass/48/github.png" alt="github"/></a>
                 </div>
+                </div> <!-- Closing contact-card -->
+            </div> <!-- Closing contact-left-col -->
+            
+            <div class="contact-right-col 3d-container">
+                <div class="cube-wrapper">
+                    <div class="cube">
+                        <div class="face front"></div>
+                        <div class="face back"></div>
+                        <div class="face right"></div>
+                        <div class="face left"></div>
+                        <div class="face top"></div>
+                        <div class="face bottom"></div>
+                    </div>
+                    <div class="ring ring-1"></div>
+                    <div class="ring ring-2"></div>
+                    <div class="ring ring-3"></div>
+                </div>
             </div>
-            <div class="card form-card">
-                <form id="contact-form" action="https://formspree.io/f/mnjgrzey" method="POST">
-                    <input type="text" name="name" placeholder="Enter Your Name" required>
-                    <input type="email" name="email" placeholder="Enter Your Email" required>
-                    <input type="text" name="subject" placeholder="Enter Your Subject">
-                    <textarea name="message" rows="5" placeholder="Enter Your Message" required></textarea>
-                    <button type="submit" class="btn btn-primary send-btn" id="contact-button">Send Message</button>
-                    <p id="contact-status"></p>
-                </form>
-            </div>
-
         </div>
     </section>
 </main>
@@ -164,6 +187,7 @@
 <footer class="footer">
     <p>Developed by Yuvraj Singh © 2026</p>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script src="main.js"></script>
 </body>
 </html>
