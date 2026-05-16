@@ -67,41 +67,105 @@ if ("IntersectionObserver" in window) {
 
 typeEffect();
 
+// ---- Contact Form with Animation ----
 const contactForm = document.getElementById("contact-form");
 const contactStatus = document.getElementById("contact-status");
+const sendBtn = document.getElementById("contact-button");
+const rocketOverlay = document.getElementById("rocket-overlay");
+const successModal = document.getElementById("success-modal");
+const successCloseBtn = document.getElementById("success-close-btn");
+
+function launchRocketAnimation() {
+    rocketOverlay.style.display = "block";
+    rocketOverlay.innerHTML = "";
+
+    // Rocket emoji
+    const rocket = document.createElement("div");
+    rocket.className = "rocket-el";
+    rocket.textContent = "🚀";
+    rocketOverlay.appendChild(rocket);
+
+    // Trail
+    const trail = document.createElement("div");
+    trail.className = "rocket-trail";
+    rocketOverlay.appendChild(trail);
+
+    // Burst particles
+    const colors = ["#00f0ff", "#7000ff", "#ffffff", "#5ea0ff", "#ff6ef7", "#00ffb3"];
+    for (let i = 0; i < 28; i++) {
+        const p = document.createElement("div");
+        p.className = "burst-particle";
+        const angle = (i / 28) * 360;
+        const dist = 80 + Math.random() * 120;
+        const rad = (angle * Math.PI) / 180;
+        const tx = Math.cos(rad) * dist;
+        const ty = Math.sin(rad) * dist;
+        p.style.setProperty("--tx", `${tx}px`);
+        p.style.setProperty("--ty", `${ty}px`);
+        p.style.background = colors[i % colors.length];
+        p.style.animationDelay = `${0.6 + Math.random() * 0.4}s`;
+        p.style.width = `${5 + Math.random() * 6}px`;
+        p.style.height = p.style.width;
+        rocketOverlay.appendChild(p);
+    }
+
+    // Show success modal after rocket flies
+    setTimeout(() => {
+        rocketOverlay.style.display = "none";
+        successModal.classList.add("visible");
+    }, 1800);
+}
+
+function showError(msg) {
+    contactStatus.textContent = msg;
+    contactStatus.className = "status-error";
+    sendBtn.classList.remove("loading");
+}
 
 if (contactForm) {
     contactForm.addEventListener("submit", async function(event) {
         event.preventDefault();
-        contactStatus.textContent = "Sending...";
-        contactStatus.className = "status-sending";
-        
+
+        // Trigger loading state on button
+        sendBtn.classList.add("loading");
+        contactStatus.textContent = "";
+        contactStatus.className = "";
+
         const data = new FormData(event.target);
         fetch(event.target.action, {
             method: contactForm.method,
             body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
+            headers: { 'Accept': 'application/json' }
         }).then(response => {
             if (response.ok) {
-                contactStatus.textContent = "Thanks for your submission!";
-                contactStatus.className = "status-success";
+                sendBtn.classList.remove("loading");
                 contactForm.reset();
+                launchRocketAnimation();
             } else {
                 response.json().then(data => {
-                    if (Object.hasOwn(data, 'errors')) {
-                        contactStatus.textContent = data["errors"].map(error => error["message"]).join(", ");
-                    } else {
-                        contactStatus.textContent = "Oops! There was a problem submitting your form";
-                    }
-                    contactStatus.className = "status-error";
-                })
+                    const msg = Object.hasOwn(data, 'errors')
+                        ? data["errors"].map(e => e["message"]).join(", ")
+                        : "Oops! There was a problem submitting your form";
+                    showError(msg);
+                });
             }
-        }).catch(error => {
-            contactStatus.textContent = "Oops! There was a problem submitting your form";
-            contactStatus.className = "status-error";
+        }).catch(() => {
+            showError("Oops! There was a problem submitting your form");
         });
+    });
+}
+
+// Close success modal on button click
+if (successCloseBtn) {
+    successCloseBtn.addEventListener("click", () => {
+        successModal.classList.remove("visible");
+    });
+}
+
+// Close success modal on backdrop click
+if (successModal) {
+    successModal.addEventListener("click", (e) => {
+        if (e.target === successModal) successModal.classList.remove("visible");
     });
 }
 
