@@ -377,10 +377,46 @@ main {
     transform: scale(1.2) translateX(2px);
 }
 
-.contact-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.contact-centered {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-desc {
+    color: var(--muted);
+    margin-bottom: 32px;
+    line-height: 1.6;
+    max-width: 600px;
+}
+
+.contact-centered .form-card {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.magnetic-btn {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px;
+    font-size: 1.05rem;
+}
+
+.contact-centered .social-links {
+    margin-top: 0;
+    justify-content: center;
     gap: 16px;
+    flex-wrap: wrap;
+}
+
+.contact-centered .social-links a {
+    width: 50px;
+    height: 50px;
+    background: rgba(10, 16, 34, 0.7);
 }
 
 .contact-list li {
@@ -462,10 +498,6 @@ textarea:focus {
 
     .services-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .contact-layout {
-        grid-template-columns: 1fr;
     }
 }
 
